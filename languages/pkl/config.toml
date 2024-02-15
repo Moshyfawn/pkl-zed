@@ -1,0 +1,4 @@
+name = "Pkl"
+grammar = "pkl"
+path_suffixes = ["pkl", "pcf"]
+brackets = [{ start = "\"", end = "\"", close = false, newline = false }]
