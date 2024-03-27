@@ -39,18 +39,20 @@
 (variableObjectLiteral (identifier) @variable)
 (propertyCallExpr (identifier) @variable)
 
-; (identifier) @variable
-
 ; Literals
 
-(stringConstant) @string
-(slStringLiteral) @string
-(mlStringLiteral) @string
+[
+  (stringConstant)
+  (slStringLiteral)
+  (mlStringLiteral)
+] @string
 
 (escapeSequence) @string.escape
 
-(intLiteral) @number
-(floatLiteral) @number
+[
+  (intLiteral)
+  (floatLiteral)
+] @number
 
 (interpolationExpr
   "\\(" @punctuation.special
@@ -64,90 +66,126 @@
   "\\##(" @punctuation.special
   ")" @punctuation.special) @none
 
-(lineComment) @comment
-(blockComment) @comment
-(docComment) @comment
+[
+  (lineComment)
+  (blockComment)
+  (docComment)
+] @comment
 
-; Operators
+"@" @attribute
 
-"??" @operator
-"@"  @attribute
-"="  @operator
-"<"  @operator
-">"  @operator
-"!"  @operator
-"==" @operator
-"!=" @operator
-"<=" @operator
-">=" @operator
-"&&" @operator
-"||" @operator
-"+"  @operator
-"-"  @operator
-"**" @operator
-"*"  @operator
-"/"  @operator
-"~/" @operator
-"%"  @operator
-"|>" @operator
+[
+  "??"
+  "="
+  "<"
+  ">"
+  "!"
+  "=="
+  "!="
+  "<="
+  ">="
+  "&&"
+  "||"
+  "+"
+  "-"
+  "**"
+  "*"
+  "/"
+  "~/"
+  "%"
+  "|>"
+] @operator
 
-"?"  @operator.type
-"|"  @operator.type
-"->" @operator.type
+[
+  "?"
+  "|"
+  "->"
+] @operator.type
 
-"..." @punctuation
-"...?" @punctuation
-"," @punctuation.delimiter
-":" @punctuation.delimiter
-"." @punctuation.delimiter
-"?." @punctuation.delimiter
+[
+  "..."
+  "...?"
+] @punctuation
 
-"(" @punctuation.bracket
-")" @punctuation.bracket
-; "[" @punctuation.bracket TODO: FIGURE OUT HOW TO REFER TO CUSTOM TOKENS
-"]" @punctuation.bracket
-"{" @punctuation.bracket
-"}" @punctuation.bracket
+[
+  ","
+  ":"
+  "."
+  "?."
+] @punctuation.delimiter
+
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+] @punctuation.bracket
 
 ; Keywords
 
-"abstract" @keyword
-"amends" @keyword
-"as" @keyword
-"class" @keyword
-"else" @conditional
-"extends" @keyword
-"external" @keyword
-(falseLiteral) @boolean
-"for" @repeat
-"function" @keyword
-"hidden" @keyword
-"if" @conditional
 (importExpr "import" @include)
 (importGlobExpr "import*" @include)
 (importClause "import" @include)
 (importGlobClause "import*" @include)
 (importClause "as" @include)
-"in" @repeat
+
 "is" @keyword.operator
-"let" @keyword
-"local" @keyword
-(moduleExpr "module" @type.builtin)
-"module" @keyword
-"new" @keyword
-"nothing" @type.builtin
+
 (nullLiteral) @constant.builtin
-"open" @keyword
-"out" @keyword
-(outerExpr) @variable.builtin
-"read" @function.builtin
-"read?" @function.builtin
-"read*" @function.builtin
-"super" @variable.builtin
-(thisExpr) @variable.builtin
-"throw" @function.builtin
-"trace" @function.builtin
-(trueLiteral) @boolean
-"typealias" @keyword
-"unknown" @type.builtin
-"when" @conditional
+
+(moduleExpr "module" @type.builtin)
+
+[
+  "nothing"
+  "unknown"
+] @type.builtin
+
+[
+  (falseLiteral)
+  (trueLiteral)
+] @boolean
+
+[
+  "for"
+  "in"
+] @repeat
+
+[
+  (outerExpr)
+  "super"
+  (thisExpr)
+] @variable.builtin
+
+[
+  "read"
+  "read?"
+  "read*"
+  "throw"
+  "trace"
+] @function.builtin
+
+[
+  "else"
+  "if"
+  "when"
+] @conditional
+
+[
+  "abstract"
+  "amends"
+  "as"
+  "class"
+  "extends"
+  "external"
+  "function"
+  "hidden"
+  "let"
+  "local"
+  "module"
+  "new"
+  "open"
+  "out"
+  "typealias"
+] @keyword
