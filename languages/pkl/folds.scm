@@ -1,4 +1,0 @@
-[
-  (objectBody)
-  (classBody)
-] @fold

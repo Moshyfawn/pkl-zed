@@ -1,7 +1,0 @@
-{
-  "name": "Pkl",
-  "version": "0.0.1",
-  "authors": ["moshyfawn <email@moshyfawn.dev>"],
-  "description": "Pkl language support for Zed",
-  "repository": "https://github.com/Moshyfawn/pkl-zed"
-}
