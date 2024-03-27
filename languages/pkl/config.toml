@@ -1,5 +1,7 @@
 name = "Pkl"
 grammar = "pkl"
+line_comments = ["// ", "/// "]
+block_comment = ["/*", "*/"]
 path_suffixes = ["pkl", "pcf"]
 autoclose_before = ",;}])>"
 brackets = [
