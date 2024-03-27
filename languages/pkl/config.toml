@@ -1,4 +1,12 @@
 name = "Pkl"
 grammar = "pkl"
 path_suffixes = ["pkl", "pcf"]
-brackets = [{ start = "\"", end = "\"", close = false, newline = false }]
+autoclose_before = ",;}])>"
+brackets = [
+  { start = "{", end = "}", close = true, newline = true },
+  { start = "<", end = ">", close = true, newline = false },
+  { start = "(", end = ")", close = true, newline = false },
+  { start = "[", end = "]", close = true, newline = false },
+  { start = "\"", end = "\"", close = true, newline = false, not_in = ["string", "comment"] },
+  { start = "/*", end = " */", close = true, newline = false, not_in = ["string", "comment"] },
+]
