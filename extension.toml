@@ -8,4 +8,4 @@ repository = "https://github.com/Moshyfawn/pkl-zed"
 
 [grammars.pkl]
 repository = "https://github.com/apple/tree-sitter-pkl"
-commit = "9fd989acb67b66799f1fd8168b7386b78a9cdba0"
+commit = "b79c8c4d2419e82324d9aca31e9de47ed8304f1f"
