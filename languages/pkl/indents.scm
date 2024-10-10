@@ -2,14 +2,9 @@
   (objectBody)
   (classBody)
   (ifExpr)
-  (mlStringLiteral)
+  (mlStringLiteralExpr)
 ] @indent
 
-[
-  "("
-  ")"
-  "{"
-  "}"
-  "if"
-  "else"
-] @branch
+(_ "{" "}" @end) @indent
+(_ "(" ")" @end) @indent
+(_ "[" "]" @end) @indent

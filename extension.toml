@@ -1,6 +1,6 @@
 id = "pkl"
 name = "Pkl"
-version = "0.1.0"
+version = "0.2.0"
 schema_version = 1
 authors = ["moshyfawn <email@moshyfawn.dev>"]
 description = "Pkl language support for Zed"
@@ -8,4 +8,8 @@ repository = "https://github.com/Moshyfawn/pkl-zed"
 
 [grammars.pkl]
 repository = "https://github.com/apple/tree-sitter-pkl"
-commit = "b79c8c4d2419e82324d9aca31e9de47ed8304f1f"
+commit = "ac58931956c000d3aeefbb55a81fc3c5bd6aecf0"
+
+[language_servers.pkl]
+name = "Pkl LSP"
+language = "Pkl"
