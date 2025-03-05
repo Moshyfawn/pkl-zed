@@ -93,7 +93,7 @@ impl zed::Extension for PklExtension {
                 "-jar".into(),
                 self.language_server_path(language_server_id)?,
             ],
-            env: Default::default(),
+            env: worktree.shell_env(),
         })
     }
 }
