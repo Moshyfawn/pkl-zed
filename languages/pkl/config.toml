@@ -1,14 +1,19 @@
 name = "Pkl"
 grammar = "pkl"
+path_suffixes = ["pkl", "pcf"]
+first_line_pattern = "^#!.*\\bpkl\\b"
 line_comments = ["// ", "/// "]
 block_comment = ["/*", "*/"]
-path_suffixes = ["pkl", "pcf"]
 autoclose_before = ",;}])>"
+tab_size = 2
+hard_tabs = false
 brackets = [
   { start = "{", end = "}", close = true, newline = true },
   { start = "<", end = ">", close = true, newline = false },
   { start = "(", end = ")", close = true, newline = false },
   { start = "[", end = "]", close = true, newline = false },
+  { start = "[[", end = "]]", close = true, newline = false },
   { start = "\"", end = "\"", close = true, newline = false, not_in = ["string", "comment"] },
+  { start = "\"\"\"", end = "\"\"\"", close = true, newline = true, not_in = ["string", "comment"] },
   { start = "/*", end = " */", close = true, newline = false, not_in = ["string", "comment"] },
 ]
