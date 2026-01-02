@@ -52,12 +52,13 @@ impl PklExtension {
             )
             .map_err(|e| format!("failed to download file: {e}"))?;
 
-            let entries =
-                fs::read_dir(".").map_err(|e| format!("failed to list working directory {e}"))?;
-            for entry in entries {
-                let entry = entry.map_err(|e| format!("failed to load directory entry {e}"))?;
-                if entry.file_name().to_str() != Some(&asset_name) {
-                    fs::remove_dir_all(entry.path()).ok();
+            if let Ok(entries) = fs::read_dir(".") {
+                for entry in entries.flatten() {
+                    let name = entry.file_name();
+                    let name_str = name.to_string_lossy();
+                    if name_str.starts_with("pkl-lsp-") && name_str != asset_name {
+                        fs::remove_file(entry.path()).ok();
+                    }
                 }
             }
         }
@@ -88,7 +89,9 @@ impl zed::Extension for PklExtension {
         worktree: &zed::Worktree,
     ) -> zed::Result<zed::Command> {
         Ok(zed::Command {
-            command: worktree.which("java").ok_or("Java must be installed")?,
+            command: worktree
+                .which("java")
+                .ok_or("Java 17+ is required. Install Java and ensure java is in your PATH")?,
             args: vec![
                 "-jar".into(),
                 self.language_server_path(language_server_id)?,
