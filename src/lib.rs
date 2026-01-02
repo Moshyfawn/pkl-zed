@@ -91,7 +91,7 @@ impl zed::Extension for PklExtension {
         Ok(zed::Command {
             command: worktree
                 .which("java")
-                .ok_or("Java 17+ is required. Install Java and ensure java is in your PATH")?,
+                .ok_or("Java 22+ is required. Install Java and ensure java is in your PATH")?,
             args: vec![
                 "-jar".into(),
                 self.language_server_path(language_server_id)?,
