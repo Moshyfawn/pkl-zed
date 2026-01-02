@@ -131,8 +131,8 @@
 (moduleExpr "module" @type.builtin)
 
 [
-  "nothing"
-  "unknown"
+  (nothingType)
+  (unknownType)
 ] @type.builtin
 
 [
