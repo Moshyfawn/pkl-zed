@@ -9,13 +9,11 @@
   "<" @punctuation.bracket
   ">" @punctuation.bracket)
 
-(typeParameter (identifier) @type)
-(typeAnnotation (type (qualifiedIdentifier) @type))
-(newExpr (type (qualifiedIdentifier) @type))
+(declaredType (qualifiedIdentifier (identifier) @type))
 
 ; Method calls
 
-(methodCallExpr
+(unqualifiedAccessExpr
   (identifier) @method)
 
 ; Method definitions
@@ -31,38 +29,34 @@
 (parameterList (typedIdentifier (identifier) @parameter))
 (objectBodyParameters (typedIdentifier (identifier) @parameter))
 
-(annotation (qualifiedIdentifier) @attribute)
 (forGenerator (typedIdentifier (identifier) @variable))
 (letExpr (typedIdentifier (identifier) @variable))
-(variableExpr (identifier) @variable)
 (importClause (identifier) @variable)
-(variableObjectLiteral (identifier) @variable)
-(propertyCallExpr (identifier) @variable)
 
 ; Literals
 
 [
   (stringConstant)
-  (slStringLiteral)
-  (mlStringLiteral)
+  (slStringLiteralExpr)
+  (mlStringLiteralExpr)
 ] @string
 
 (escapeSequence) @string.escape
 
 [
-  (intLiteral)
-  (floatLiteral)
+  (intLiteralExpr)
+  (floatLiteralExpr)
 ] @number
 
-(interpolationExpr
+(stringInterpolation
   "\\(" @punctuation.special
   ")" @punctuation.special) @none
 
-(interpolationExpr
+(stringInterpolation
  "\\#(" @punctuation.special
  ")" @punctuation.special) @none
 
-(interpolationExpr
+(stringInterpolation
   "\\##(" @punctuation.special
   ")" @punctuation.special) @none
 
@@ -126,14 +120,13 @@
 ; Keywords
 
 (importExpr "import" @include)
-(importGlobExpr "import*" @include)
 (importClause "import" @include)
 (importGlobClause "import*" @include)
 (importClause "as" @include)
 
 "is" @keyword.operator
 
-(nullLiteral) @constant.builtin
+(nullLiteralExpr) @constant.builtin
 
 (moduleExpr "module" @type.builtin)
 
@@ -143,8 +136,8 @@
 ] @type.builtin
 
 [
-  (falseLiteral)
-  (trueLiteral)
+  (falseLiteralExpr)
+  (trueLiteralExpr)
 ] @boolean
 
 [

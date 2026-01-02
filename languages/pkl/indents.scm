@@ -2,7 +2,7 @@
   (objectBody)
   (classBody)
   (ifExpr)
-  (mlStringLiteral)
+  (mlStringLiteralExpr)
 ] @indent
 
 [
