@@ -16,6 +16,3 @@
 (_ "[" "]" @end) @indent
 
 "else" @outdent
-"}" @outdent
-"]" @outdent
-")" @outdent
